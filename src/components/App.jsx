@@ -38,27 +38,27 @@ class App extends Component {
 
   getfilteredContacts = () => {
     const normalizedFilter = this.state.filter.toLowerCase();
-    console.log(this.state.contacts);
+    // console.log(this.state.contacts);
     return this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
 
   componentDidMount() {
-    console.log('componentDidMount');
-    const contactss = localStorage.getItem('contacts');
-    console.log('contactss', contactss);
-    const parsedContacts = JSON.parse(contactss);
-    console.log('parsedContacts', parsedContacts);
+    // console.log('componentDidMount');
+    const getContacts = localStorage.getItem('contacts');
+    // console.log('contactss', contactss);
+    const parsedContacts = JSON.parse(getContacts);
+    // console.log('parsedContacts', parsedContacts);
     if (parsedContacts) {
       this.setState({ contacts: parsedContacts });
     }
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    if (this.state.contacts !== prevState.contacts) {
-      console.log('обновилось');
-    }
+    // if (this.state.contacts !== prevState.contacts) {
+    //   console.log('обновилось');
+    // }
     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   };
 
